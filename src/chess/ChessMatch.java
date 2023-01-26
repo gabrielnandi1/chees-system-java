@@ -38,12 +38,11 @@ public class ChessMatch {
         Piece capturedPiece = board.removePiece(target);
         board.placePiece(p, target);
         return capturedPiece;
-
     }
 
     private void validateSourcePosition(Position position) {
         if (!board.thereIsAPiece(position)) {
-            throw new ChessExeception("Nao existe peca na posicacao de origem");
+            throw new ChessExeception("Nao ha peca na posicao de origem");
         }
     }
 
@@ -65,7 +64,5 @@ public class ChessMatch {
         placeNewPiece('e', 7, new Rook(board, Color.BLACK));
         placeNewPiece('e', 8, new Rook(board, Color.BLACK));
         placeNewPiece('d', 8, new King(board, Color.BLACK));
-
     }
-
 }
