@@ -44,9 +44,8 @@ public class UI {
             int row = Integer.parseInt(s.substring(1));
             return new ChessPosition(column, row);
         } catch (RuntimeException e) {
-            throw new InputMismatchException("Erro lendo posicao do xadrez, valores validos sao de a1 ate h8.");
+            throw new InputMismatchException("Valores validos sao de  a1 a h8.");
         }
-
     }
 
     public static void printBoard(ChessPiece[][] pieces) {
