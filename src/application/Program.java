@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import chess.ChessException;
+import chess.ChessExeception;
 import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
@@ -39,7 +39,7 @@ public class Program {
                     captured.add(capturedPiece);
                 }
 
-            } catch (ChessException e) {
+            } catch (ChessExeception e) {
                 System.out.println(e.getMessage());
                 sc.nextLine();
             } catch (InputMismatchException e) {
