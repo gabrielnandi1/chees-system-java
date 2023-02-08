@@ -11,6 +11,7 @@ import chessPieces.Bishop;
 import chessPieces.King;
 import chessPieces.Knight;
 import chessPieces.Pawn;
+import chessPieces.Queen;
 import chessPieces.Rook;
 
 public class ChessMatch {
@@ -72,7 +73,7 @@ public class ChessMatch {
 
         if (testCheck(currentPlayer)) {
             undoMove(source, target, capturedPiece);
-            throw new ChessExeception("You can't put yourself in check");
+            throw new ChessExeception("Voce nao pode se colocar em xeque");
         }
 
         check = (testCheck(opponent(currentPlayer))) ? true : false;
@@ -114,19 +115,19 @@ public class ChessMatch {
 
     private void validateSourcePosition(Position position) {
         if (!board.thereIsAPiece(position)) {
-            throw new ChessExeception("There is no piece on source position");
+            throw new ChessExeception("Nao existe peça na posiçao de origem");
         }
         if (currentPlayer != ((ChessPiece) board.piece(position)).getColor()) {
-            throw new ChessExeception("The chosen piece is not yours");
+            throw new ChessExeception("A peca escolhida nao é sua");
         }
         if (!board.piece(position).isThereAnyPossibleMove()) {
-            throw new ChessExeception("There is no possible moves for the chosen piece");
+            throw new ChessExeception("Nao ha movimentos possiveis para a peça escolhida");
         }
     }
 
     private void validateTargetPosition(Position source, Position target) {
         if (!board.piece(source).possibleMove(target)) {
-            throw new ChessExeception("The chosen piece can't move to target position");
+            throw new ChessExeception("A peca escolhida nao pode se mover para a posicao alvo");
         }
     }
 
@@ -147,7 +148,7 @@ public class ChessMatch {
                 return (ChessPiece) p;
             }
         }
-        throw new IllegalStateException("There is no " + color + " king on the board");
+        throw new IllegalStateException("Nao ha " + color + "Rei no tabuleiro");
     }
 
     private boolean testCheck(Color color) {
@@ -198,6 +199,7 @@ public class ChessMatch {
         placeNewPiece('a', 1, new Rook(board, Color.WHITE));
         placeNewPiece('b', 1, new Knight(board, Color.WHITE));
         placeNewPiece('c', 1, new Bishop(board, Color.WHITE));
+        placeNewPiece('d', 1, new Queen(board, Color.WHITE));
         placeNewPiece('e', 1, new King(board, Color.WHITE));
         placeNewPiece('f', 1, new Bishop(board, Color.WHITE));
         placeNewPiece('g', 1, new Knight(board, Color.WHITE));
@@ -214,6 +216,7 @@ public class ChessMatch {
         placeNewPiece('a', 8, new Rook(board, Color.BLACK));
         placeNewPiece('b', 8, new Knight(board, Color.BLACK));
         placeNewPiece('c', 8, new Bishop(board, Color.BLACK));
+        placeNewPiece('d', 8, new Queen(board, Color.BLACK));
         placeNewPiece('e', 8, new King(board, Color.BLACK));
         placeNewPiece('f', 8, new Bishop(board, Color.BLACK));
         placeNewPiece('g', 8, new Knight(board, Color.BLACK));
